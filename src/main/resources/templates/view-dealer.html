@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+  <head>
+    <title>View By Id</title>
+  </head>
+
+  <body>
+    <h3 th:text="'Alamat: ' + ${alamat}"></h3>
+    <h3 th:text="'Telepon: ' + ${no_telp}"></h3>
+    <ol>
+      <li
+      	th:each="car : ${car_list}"
+      >
+      	<h4 th:text="'Brand: ' + ${car.brand} + ' - Type: ' + ${car.type} + ' - Amount: ' + ${car.amount} + ' - Price: ' + ${car.price}"></h4>
+        <form th:action="@{'/car/delete/' + ${dealerID} + '/' + ${car.id}}" method="POST">
+          <button type="submit">Delete Car</button>
+        </form>
+        <br>
+      </li>
+    </ol>
+    <td>
+      <a th:href="@{'/car/add/' + ${dealerID}}">Add Car</a>
+      <a th:href="@{/}">Home</a>
+    </td>
+    <form th:action="@{'/dealer/delete/' + ${dealerID}}" method="POST">
+      <button type="submit">Delete Dealer</button>
+    </form>
+  </body>
+
+</html>
