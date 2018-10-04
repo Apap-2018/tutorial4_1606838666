@@ -45,7 +45,7 @@ public class DealerController {
 	@RequestMapping(value = "/dealer/add", method = RequestMethod.POST)
 	private String addDealerSubmit(@ModelAttribute DealerModel dealer) {
 		dealerService.addDealer(dealer);
-		return "home";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/dealer/view", method = RequestMethod.GET)

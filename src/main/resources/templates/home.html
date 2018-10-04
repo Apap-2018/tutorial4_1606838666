@@ -23,6 +23,7 @@
     <ol>
       <li th:each="dealer : ${dealer_list}">
         <h4 th:text="'Dealer ID: ' + ${dealer.id}"></h4>
+        <h4 th:text="'Dealer Alamat: ' + ${dealer.alamat}"></h4>
         <form th:action="@{'/dealer/view'}" method="GET">
           <input type="text" name="dealerId" th:value="${dealer.id}" hidden/>
           <button type="submit">View Dealer</button>
