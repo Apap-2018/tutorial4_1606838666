@@ -72,5 +72,25 @@ public class DealerController {
 		dealerService.deleteDealer(dealerId);
 		return "delete-dealer";
 	}
+	
+	@RequestMapping(value = "/dealer/edit/{dealerId}", method = RequestMethod.GET)
+	private String editDealer(@PathVariable(value = "dealerId") Long dealerId, Model model) {
+		DealerModel dealer = dealerService.getDealerDetailById(dealerId).get();
+		
+		String alamat = dealer.getAlamat();
+		String no_telp = dealer.getNoTelp();
+		Long id = dealer.getId();
+
+		model.addAttribute("dealerId", id);
+		model.addAttribute("alamat", alamat);
+		model.addAttribute("no_telp", no_telp);
+		return "edit-dealer";
+	}
+	
+	@RequestMapping(value = "/dealer/edit/{dealerId}", method = RequestMethod.POST)
+	private String editDealer(@PathVariable(value = "dealerId") Long dealerId, @ModelAttribute DealerModel newDealer) {
+		dealerService.editDealer(newDealer, dealerId);
+		return "redirect:/dealer/view?dealerId=" + Long.toString(dealerId);
+	}
 
 }

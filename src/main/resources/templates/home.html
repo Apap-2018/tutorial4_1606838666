@@ -23,6 +23,9 @@
     <ol>
       <li th:each="dealer : ${dealer_list}">
         <h4 th:text="'Dealer ID: ' + ${dealer.id}"></h4>
+        <form th:action="@{'/dealer/edit/' + ${dealer.id}}" method="GET">
+          <button type="submit">Update Dealer</button>
+        </form>
         <ul>
           <li th:each="car : ${dealer.getListCar()}">
             <h5 th:text="'Brand: ' + ${car.brand} + ' - Amount: ' + ${car.amount} + ' - Price: ' + ${car.price}"></h5>

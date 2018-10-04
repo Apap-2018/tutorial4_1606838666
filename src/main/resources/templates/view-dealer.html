@@ -12,6 +12,9 @@
       	th:each="car : ${car_list}"
       >
       	<h4 th:text="'Brand: ' + ${car.brand} + ' - Type: ' + ${car.type} + ' - Amount: ' + ${car.amount} + ' - Price: ' + ${car.price}"></h4>
+        <form th:action="@{'/car/edit/' + ${dealerID} + '/' + ${car.id}}" method="GET">
+          <button type="submit">Update Car</button>
+        </form>
         <form th:action="@{'/car/delete/' + ${dealerID} + '/' + ${car.id}}" method="POST">
           <button type="submit">Delete Car</button>
         </form>

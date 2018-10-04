@@ -46,4 +46,12 @@ public class DealerServiceImpl implements DealerService {
 		return dealerDb.findAll();
 	}
 
+	@Override
+	public void editDealer(DealerModel dealer, Long id) {
+		// TODO Auto-generated method stub
+		DealerModel updatedDealer = dealerDb.getOne(id);
+		updatedDealer.setAlamat(dealer.getAlamat());
+		updatedDealer.setNoTelp(dealer.getNoTelp());
+		dealerDb.save(updatedDealer);
+	}
 }
